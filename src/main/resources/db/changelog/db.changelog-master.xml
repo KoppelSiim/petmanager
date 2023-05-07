@@ -4,29 +4,30 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
  <changeSet id="1" author="liquibase">
-   <createTable tableName="petlist">
+   <createTable tableName="pets">
            <column name="id" type="int">
               <constraints primaryKey="true" nullable="false"/>
            </column>
-           <column name="petName" type="varchar(255)">
+           <column name="pet_name" type="varchar(255)">
            </column>
            <column name="code" type="varchar(255)">
-              <constraints nullable="false" unique="true" uniqueConstraintName="petlist_code"/>
            </column>
-           <column name="petType" type="varchar(255)">
+           <column name="pet_type" type="varchar(255)">
            </column>
-           <column name="furColor" type="varchar(255)">
+           <column name="fur_color" type="varchar(255)">
            </column>
            <column name="country" type="varchar(255)">
            </column>
    </createTable>
+ </changeSet>
+ <changeSet id="2" author="liquibase">
    <sql>
-    INSERT INTO petlist (
+    INSERT INTO pets (
       id,
-      petName,
+      pet_name,
       code,
-      petType,
-      furColor,
+      pet_type,
+      fur_color,
       country
     )
     values(
@@ -68,8 +69,14 @@
       'Parrot',
       'Blue',
       'Sweden'
-    )
+    );
    </sql>
-</changeSet>
-
+ </changeSet>
+ <changeSet id="3" author="liquibase">
+   <sql>
+    CREATE SEQUENCE start_from_six
+    INCREMENT BY 1
+    START WITH 6;
+   </sql>
+ </changeSet>
 </databaseChangeLog>
