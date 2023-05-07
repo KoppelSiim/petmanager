@@ -1,0 +1,75 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+ <changeSet id="1" author="liquibase">
+   <createTable tableName="petlist">
+           <column name="id" type="int">
+              <constraints primaryKey="true" nullable="false"/>
+           </column>
+           <column name="petName" type="varchar(255)">
+           </column>
+           <column name="code" type="varchar(255)">
+              <constraints nullable="false" unique="true" uniqueConstraintName="petlist_code"/>
+           </column>
+           <column name="petType" type="varchar(255)">
+           </column>
+           <column name="furColor" type="varchar(255)">
+           </column>
+           <column name="country" type="varchar(255)">
+           </column>
+   </createTable>
+   <sql>
+    INSERT INTO petlist (
+      id,
+      petName,
+      code,
+      petType,
+      furColor,
+      country
+    )
+    values(
+      1,
+      'Miisu',
+      '112233445566',
+      'Cat',
+      'Black',
+      'Estonia'
+    ),
+    (
+      2,
+      'Pitsu',
+      '223344556677',
+      'Dog',
+      'Brown',
+      'Latvia'
+    ),
+    (
+      3,
+      'Tori',
+      '334455667788',
+      'Horse',
+      'White',
+      'Lithuania'
+    ),
+    (
+      4,
+      'Nunnu',
+      '445566778899',
+      'Rabbit',
+      'Yellow',
+      'Finland'
+    ),
+    (
+      5,
+      'Helga',
+      '556677889911',
+      'Parrot',
+      'Blue',
+      'Sweden'
+    )
+   </sql>
+</changeSet>
+
+</databaseChangeLog>
